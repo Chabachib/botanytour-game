@@ -202,7 +202,7 @@ class _Level1ScreenState extends State<Level1Screen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/puzzle-bg.jpg'),
+                image: AssetImage('images/backgrounds/puzzle-bg.jpg'),
                 fit: BoxFit.cover,
               ),
             ),

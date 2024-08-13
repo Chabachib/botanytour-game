@@ -54,7 +54,8 @@ class _Level12ScreenState extends State<Level12Screen> {
     int tileSize = image.width ~/ 3; // Updated for 3x3 grid
     List<Image?> tiles = [];
 
-    for (int i = 0; i < 3; i++) { // Updated for 3x3 grid
+    for (int i = 0; i < 3; i++) {
+      // Updated for 3x3 grid
       for (int j = 0; j < 3; j++) {
         if (i == 2 && j == 2) break; // Skip the last tile
 
@@ -65,7 +66,8 @@ class _Level12ScreenState extends State<Level12Screen> {
     return tiles;
   }
 
-  Future<Uint8List> _extractTile(ui.Image image, int i, int j, int tileSize) async {
+  Future<Uint8List> _extractTile(
+      ui.Image image, int i, int j, int tileSize) async {
     final recorder = ui.PictureRecorder();
     final canvas = Canvas(recorder);
 
@@ -75,14 +77,16 @@ class _Level12ScreenState extends State<Level12Screen> {
       tileSize.toDouble(),
       tileSize.toDouble(),
     );
-    final dstRect = Rect.fromLTWH(0, 0, tileSize.toDouble(), tileSize.toDouble());
+    final dstRect =
+        Rect.fromLTWH(0, 0, tileSize.toDouble(), tileSize.toDouble());
 
     canvas.drawImageRect(image, srcRect, dstRect, Paint());
 
     final picture = recorder.endRecording();
     final ui.Image tileImage = await picture.toImage(tileSize, tileSize);
 
-    ByteData? byteData = await tileImage.toByteData(format: ui.ImageByteFormat.png);
+    ByteData? byteData =
+        await tileImage.toByteData(format: ui.ImageByteFormat.png);
     return byteData!.buffer.asUint8List();
   }
 
@@ -116,8 +120,10 @@ class _Level12ScreenState extends State<Level12Screen> {
   }
 
   bool _canMove(int index) {
-    int rowDifference = (_emptyTileIndex ~/ 3 - index ~/ 3).abs(); // Updated for 3x3 grid
-    int columnDifference = (_emptyTileIndex % 3 - index % 3).abs(); // Updated for 3x3 grid
+    int rowDifference =
+        (_emptyTileIndex ~/ 3 - index ~/ 3).abs(); // Updated for 3x3 grid
+    int columnDifference =
+        (_emptyTileIndex % 3 - index % 3).abs(); // Updated for 3x3 grid
     return (rowDifference + columnDifference) == 1;
   }
 
@@ -196,7 +202,7 @@ class _Level12ScreenState extends State<Level12Screen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/puzzle-bg.jpg'),
+                image: AssetImage('images/backgrounds/puzzle-bg.jpg'),
                 fit: BoxFit.cover,
               ),
             ),

@@ -13,7 +13,7 @@ class PuzzleHomeScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/puzzle-bg.png'),
+                image: AssetImage('images/backgrounds/puzzle-bg.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -31,16 +31,19 @@ class PuzzleHomeScreen extends StatelessWidget {
                     color: Color(0xFF0c2d0e), // Updated color
                   ),
                 ),
-                const SizedBox(height: 20), // Adds spacing between title and button
+                const SizedBox(
+                    height: 20), // Adds spacing between title and button
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const GameScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const GameScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 20),
                     textStyle: const TextStyle(fontSize: 20),
                   ),
                   child: const Text('Play'),

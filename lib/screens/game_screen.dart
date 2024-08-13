@@ -1,11 +1,41 @@
 import 'package:flutter/material.dart';
-import 'dart:ui'; // For the BackdropFilter
+import 'dart:ui';
+import 'package:myapp/screens/levels/level1_screen.dart';
+import 'package:myapp/screens/levels/level2_screen.dart';
+import 'package:myapp/screens/levels/level3_screen.dart';
+import 'package:myapp/screens/levels/level4_screen.dart';
+import 'package:myapp/screens/levels/level5_screen.dart';
+import 'package:myapp/screens/levels/level6_screen.dart';
+import 'package:myapp/screens/levels/level7_screen.dart';
+import 'package:myapp/screens/levels/level8_screen.dart';
+import 'package:myapp/screens/levels/level9_screen.dart';
+import 'package:myapp/screens/levels/level10_screen.dart';
+import 'package:myapp/screens/levels/level11_screen.dart';
+import 'package:myapp/screens/levels/level12_screen.dart';
+import 'package:myapp/screens/levels/level13_screen.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Define the map associating index with the level screens
+    final levelScreens = <int, Widget>{
+      0: const Level1Screen(),
+      1: const Level2Screen(),
+      2: const Level3Screen(),
+      3: const Level4Screen(),
+      4: const Level5Screen(),
+      5: const Level6Screen(),
+      6: const Level7Screen(),
+      7: const Level8Screen(),
+      8: const Level9Screen(),
+      9: const Level10Screen(),
+      10: const Level11Screen(),
+      11: const Level12Screen(),
+      12: const Level13Screen(),
+    };
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Slide Puzzle'),
@@ -16,7 +46,7 @@ class GameScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/puzzle-bg.png'),
+                image: AssetImage('images/backgrounds/puzzle-bg.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -43,8 +73,14 @@ class GameScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ElevatedButton(
                   onPressed: () {
-                    // Handle button press
-                    // Navigate to a specific level or show a dialog
+                    // Navigate to the corresponding level screen
+                    final screen = levelScreens[index];
+                    if (screen != null) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => screen),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF5da45a), // Button color
