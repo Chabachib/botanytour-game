@@ -3,14 +3,16 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class Level1Screen extends StatefulWidget {
-  const Level1Screen({super.key});
+class ArganiaSpinosaPuzzleScreen extends StatefulWidget {
+  const ArganiaSpinosaPuzzleScreen({super.key});
 
   @override
-  State<Level1Screen> createState() => _Level1ScreenState();
+  State<ArganiaSpinosaPuzzleScreen> createState() =>
+      _ArganiaSpinosaPuzzleScreenState();
 }
 
-class _Level1ScreenState extends State<Level1Screen> {
+class _ArganiaSpinosaPuzzleScreenState
+    extends State<ArganiaSpinosaPuzzleScreen> {
   List<Image?> _tiles = []; // Initialized to an empty list
   List<Image?> _correctOrder = [];
   late int _emptyTileIndex;

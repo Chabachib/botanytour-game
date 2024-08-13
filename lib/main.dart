@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/puzzle_home_screen.dart'; // Import the puzzle home screen
+import 'package:myapp/screens/index.dart'; // Import the puzzle home screen
 
 void main() {
   runApp(const MyApp());

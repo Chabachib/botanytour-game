@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/game_screen.dart';
+import 'package:myapp/screens/game_menu.dart';
 
 class PuzzleHomeScreen extends StatelessWidget {
   const PuzzleHomeScreen({super.key});

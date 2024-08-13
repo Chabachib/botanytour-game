@@ -3,14 +3,15 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'dart:math';
 
-class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+class ArganiaSpinosaQuizScreen extends StatefulWidget {
+  const ArganiaSpinosaQuizScreen({super.key});
 
   @override
-  State<QuizScreen> createState() => _QuizScreenState();
+  State<ArganiaSpinosaQuizScreen> createState() =>
+      _ArganiaSpinosaQuizScreenState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _ArganiaSpinosaQuizScreenState extends State<ArganiaSpinosaQuizScreen> {
   Map<String, dynamic>? _currentQuestion;
   String? _selectedAnswer;
   String _feedback = '';

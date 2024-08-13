@@ -36,6 +36,8 @@ flutter:
     - assets/images/levels/level11-plant.jpg
     - assets/images/levels/level12-plant.jpg
     - assets/images/levels/level13-plant.jpg
-    - assets/quiz_questions.json
+    - assets/quiz-questions/quiz_questions.json
+    - assets/images/find-the-plant/plant.png
+
 
 

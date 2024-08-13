@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/quiz_screen.dart';
+import 'package:myapp/screens/plant-screens/festuca-glauca/festuca_glauca_quiz.dart';
+import 'package:myapp/screens/plant-screens/festuca-glauca/festuca_glauca_find_the_plant.dart';
+import 'package:myapp/screens/plant-screens/festuca-glauca/festuca_glauca_puzzle.dart';
 
-class Level1MenuScreen extends StatelessWidget {
-  const Level1MenuScreen({super.key});
+class FestucaGlaucaMenuScreen extends StatelessWidget {
+  const FestucaGlaucaMenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Level 1 Menu'),
+        title: const Text('Festuca glauca Vill Game Menu'),
       ),
       body: Stack(
         children: [
@@ -31,7 +33,12 @@ class Level1MenuScreen extends StatelessWidget {
                 mainAxisSpacing: 16.0,
               ),
               children: [
-                _buildMenuButton(context, 'Quiz', const QuizScreen()),
+                _buildMenuButton(
+                    context, 'Quiz', const FestucaGlaucaQuizScreen()),
+                _buildMenuButton(context, 'Find the Plant',
+                    const FestucaGlaucaFindThePlantScreen()),
+                _buildMenuButton(context, 'Level 1 Puzzle',
+                    const FestucaGlaucaPuzzleScreen()),
               ],
             ),
           ),
