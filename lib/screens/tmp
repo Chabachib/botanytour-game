@@ -1,15 +1,39 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:myapp/screens/levels-menu-screens/level1_menu_screen.dart'; // Import level menu screens
+import 'package:myapp/screens/puzzle-levels/level1puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level2puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level3puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level4puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level5puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level6puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level7puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level8puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level9puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level10puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level11puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level12puzzle_screen.dart';
+import 'package:myapp/screens/puzzle-levels/level13puzzle_screen.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Define the map associating index with the level menu screens
+    // Define the map associating index with the level screens
     final levelScreens = <int, Widget>{
-      0: const Level1MenuScreen(),
+      0: const Level1Screen(),
+      1: const Level2Screen(),
+      2: const Level3Screen(),
+      3: const Level4Screen(),
+      4: const Level5Screen(),
+      5: const Level6Screen(),
+      6: const Level7Screen(),
+      7: const Level8Screen(),
+      8: const Level9Screen(),
+      9: const Level10Screen(),
+      10: const Level11Screen(),
+      11: const Level12Screen(),
+      12: const Level13Screen(),
     };
 
     return Scaffold(
@@ -49,7 +73,7 @@ class GameScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ElevatedButton(
                   onPressed: () {
-                    // Navigate to the corresponding level menu screen
+                    // Navigate to the corresponding level screen
                     final screen = levelScreens[index];
                     if (screen != null) {
                       Navigator.push(

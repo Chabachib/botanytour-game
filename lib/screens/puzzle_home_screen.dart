@@ -13,7 +13,7 @@ class PuzzleHomeScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/backgrounds/puzzle-bg.jpg'),
+                image: AssetImage('assets/images/backgrounds/puzzle-bg.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -24,7 +24,7 @@ class PuzzleHomeScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
-                  'Botany Puzzle',
+                  'BotanyTour Game',
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,

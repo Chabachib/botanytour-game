@@ -22,19 +22,20 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/backgrounds/puzzle-bg.jpg
-    - images/levels/level1-plant.jpg
-    - images/levels/level2-plant.jpg
-    - images/levels/level3-plant.jpg
-    - images/levels/level4-plant.jpg
-    - images/levels/level5-plant.jpg
-    - images/levels/level6-plant.jpg
-    - images/levels/level7-plant.jpg
-    - images/levels/level8-plant.jpg
-    - images/levels/level9-plant.jpg
-    - images/levels/level10-plant.jpg
-    - images/levels/level11-plant.jpg
-    - images/levels/level12-plant.jpg
-    - images/levels/level13-plant.jpg
+    - assets/images/backgrounds/puzzle-bg.jpg
+    - assets/images/levels/level1-plant.jpg
+    - assets/images/levels/level2-plant.jpg
+    - assets/images/levels/level3-plant.jpg
+    - assets/images/levels/level4-plant.jpg
+    - assets/images/levels/level5-plant.jpg
+    - assets/images/levels/level6-plant.jpg
+    - assets/images/levels/level7-plant.jpg
+    - assets/images/levels/level8-plant.jpg
+    - assets/images/levels/level9-plant.jpg
+    - assets/images/levels/level10-plant.jpg
+    - assets/images/levels/level11-plant.jpg
+    - assets/images/levels/level12-plant.jpg
+    - assets/images/levels/level13-plant.jpg
+    - assets/quiz_questions.json
 
 
