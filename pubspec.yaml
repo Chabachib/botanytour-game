@@ -22,22 +22,52 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/backgrounds/puzzle-bg.jpg
-    - assets/images/levels/level1-plant.jpg
-    - assets/images/levels/level2-plant.jpg
-    - assets/images/levels/level3-plant.jpg
-    - assets/images/levels/level4-plant.jpg
-    - assets/images/levels/level5-plant.jpg
-    - assets/images/levels/level6-plant.jpg
-    - assets/images/levels/level7-plant.jpg
-    - assets/images/levels/level8-plant.jpg
-    - assets/images/levels/level9-plant.jpg
-    - assets/images/levels/level10-plant.jpg
-    - assets/images/levels/level11-plant.jpg
-    - assets/images/levels/level12-plant.jpg
-    - assets/images/levels/level13-plant.jpg
-    - assets/quiz-questions/quiz_questions.json
-    - assets/images/find-the-plant/plant.png
-
+      # Puzzle Plants' Images
+    - assets/images/puzzle/acanthus-mollis.jpg
+    - assets/images/puzzle/aeonium-arboreum.jpg
+    - assets/images/puzzle/argania-spinosa.jpg
+    - assets/images/puzzle/arundo-donax.jpg
+    - assets/images/puzzle/atriplex-nummularia.jpg
+    - assets/images/puzzle/cupressus-sempervirens.jpg
+    - assets/images/puzzle/cynara-scolymus.jpg
+    - assets/images/puzzle/festuca-glauca.jpg
+    - assets/images/puzzle/gazania-rigens.jpg
+    - assets/images/puzzle/hyoscyamus-albus.jpg
+    - assets/images/puzzle/nephrolepis-exaltata.jpg
+    - assets/images/puzzle/ononis-natrix.jpg
+    - assets/images/puzzle/thapsia-transtagana.jpg
+    # Find the plant Wallpaper
+    - assets/images/find-the-plant/background/argania-wallpaper.jpg
+    - assets/images/find-the-plant/background/festuca-wallpaper.jpg
+    - assets/images/find-the-plant/background/gazania-wallpaper.jpg
+    - assets/images/find-the-plant/background/ononis-wallpaper.jpg
+    - assets/images/find-the-plant/background/atriplex-wallpaper.jpg
+    - assets/images/find-the-plant/background/hyoscyamus-wallpaper.jpg
+    - assets/images/find-the-plant/background/arundo-wallpaper.jpg
+    - assets/images/find-the-plant/background/cupressus-wallpaper.jpg
+    - assets/images/find-the-plant/background/thapsia-wallpaper.jpg
+    - assets/images/find-the-plant/background/nephrolepis-wallpaper.jpg
+    - assets/images/find-the-plant/background/aeonium-wallpaper.jpg
+    - assets/images/find-the-plant/background/cynara-wallpaper.jpg
+    - assets/images/find-the-plant/background/acanthus-wallpaper.jpg
+    # Find the plant Images
+    - assets/images/find-the-plant/plant/find-argania.png
+    - assets/images/find-the-plant/plant/find-festuca.png
+    - assets/images/find-the-plant/plant/find-gazania.png
+    - assets/images/find-the-plant/plant/find-ononis.png
+    - assets/images/find-the-plant/plant/find-atriplex.png
+    - assets/images/find-the-plant/plant/find-hyoscyamus.png
+    - assets/images/find-the-plant/plant/find-arundo.png
+    - assets/images/find-the-plant/plant/find-cupressus.png
+    - assets/images/find-the-plant/plant/find-thapsia.png
+    - assets/images/find-the-plant/plant/find-nephrolepis.png
+    - assets/images/find-the-plant/plant/find-aeonium.png
+    - assets/images/find-the-plant/plant/find-cynara.png
+    - assets/images/find-the-plant/plant/find-acanthus.png
+    # Background Images
+    - assets/images/backgrounds/background-1.jpg
+    # JSON Files
+    - assets/json-files/plants.json
+    - assets/json-files/quiz_questions.json
 
 

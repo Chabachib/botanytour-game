@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/game_menu.dart';
+import 'package:myapp/screens/plant_menu.dart';
 
 class PuzzleHomeScreen extends StatelessWidget {
   const PuzzleHomeScreen({super.key});
@@ -13,7 +13,7 @@ class PuzzleHomeScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/backgrounds/puzzle-bg.jpg'),
+                image: AssetImage('assets/images/backgrounds/background-1.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -38,7 +38,7 @@ class PuzzleHomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const GameScreen()),
+                          builder: (context) => const PlantMenuScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

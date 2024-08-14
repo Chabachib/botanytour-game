@@ -1,0 +1,719 @@
+{
+  "plants": [
+    {
+      "name": "Argania spinosa (L.) Skeels",
+      "questions": [
+        {
+          "question": "What is the common name of Argania spinosa?",
+          "options": ["Argan Tree", "Olive Tree", "Cedar Tree", "Oak Tree"],
+          "answer": "Argan Tree"
+        },
+        {
+          "question": "Where is Argania spinosa commonly found?",
+          "options": ["Morocco", "Brazil", "India", "Australia"],
+          "answer": "Morocco"
+        },
+        {
+          "question": "Which product is derived from Argania spinosa?",
+          "options": ["Argan Oil", "Coconut Oil", "Olive Oil", "Palm Oil"],
+          "answer": "Argan Oil"
+        },
+        {
+          "question": "What is the primary use of Argan Oil?",
+          "options": ["Cosmetics", "Fuel", "Construction", "Textiles"],
+          "answer": "Cosmetics"
+        },
+        {
+          "question": "How long can an Argan tree live?",
+          "options": ["200 years", "100 years", "50 years", "500 years"],
+          "answer": "200 years"
+        },
+        {
+          "question": "What type of environment does Argania spinosa thrive in?",
+          "options": ["Semi-desert", "Rainforest", "Wetlands", "Mountainous"],
+          "answer": "Semi-desert"
+        },
+        {
+          "question": "What part of the Argan tree is used to produce oil?",
+          "options": ["Fruit", "Bark", "Leaves", "Roots"],
+          "answer": "Fruit"
+        },
+        {
+          "question": "What color are the flowers of Argania spinosa?",
+          "options": ["Yellow", "Red", "Blue", "White"],
+          "answer": "Yellow"
+        },
+        {
+          "question": "What is the main threat to Argania spinosa?",
+          "options": ["Deforestation", "Overgrazing", "Pests", "Climate Change"],
+          "answer": "Overgrazing"
+        },
+        {
+          "question": "How is Argania spinosa propagated?",
+          "options": ["Seeds", "Cuttings", "Grafting", "Layering"],
+          "answer": "Seeds"
+        }
+      ]
+    },
+    {
+      "name": "Festuca glauca Vill",
+      "questions": [
+        {
+          "question": "What is the common name of Festuca glauca?",
+          "options": ["Blue Fescue", "Green Fescue", "Red Fescue", "Yellow Fescue"],
+          "answer": "Blue Fescue"
+        },
+        {
+          "question": "What is the primary habitat of Festuca glauca?",
+          "options": ["Grasslands", "Forests", "Deserts", "Wetlands"],
+          "answer": "Grasslands"
+        },
+        {
+          "question": "How tall does Festuca glauca typically grow?",
+          "options": ["10-20 cm", "30-40 cm", "50-60 cm", "70-80 cm"],
+          "answer": "30-40 cm"
+        },
+        {
+          "question": "What is the color of Festuca glauca leaves?",
+          "options": ["Blue-green", "Yellow-green", "Red-green", "Purple-green"],
+          "answer": "Blue-green"
+        },
+        {
+          "question": "Which season does Festuca glauca bloom?",
+          "options": ["Spring", "Summer", "Autumn", "Winter"],
+          "answer": "Summer"
+        },
+        {
+          "question": "Is Festuca glauca drought-tolerant?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What type of soil is best for Festuca glauca?",
+          "options": ["Well-drained", "Clay", "Sandy", "Waterlogged"],
+          "answer": "Well-drained"
+        },
+        {
+          "question": "How often should Festuca glauca be watered?",
+          "options": ["Once a week", "Daily", "Every other day", "Once a month"],
+          "answer": "Once a week"
+        },
+        {
+          "question": "Is Festuca glauca suitable for ground cover?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What is the best use of Festuca glauca in landscaping?",
+          "options": ["Borders", "Hedges", "Lawns", "Climbing"],
+          "answer": "Borders"
+        }
+      ]
+    },
+    {
+      "name": "Cupressus sempervirens L.",
+      "questions": [
+        {
+          "question": "What is the common name of Cupressus sempervirens?",
+          "options": ["Italian Cypress", "Redwood", "Pine", "Oak"],
+          "answer": "Italian Cypress"
+        },
+        {
+          "question": "What is the typical height of Cupressus sempervirens?",
+          "options": ["20-30 meters", "5-10 meters", "10-15 meters", "40-50 meters"],
+          "answer": "20-30 meters"
+        },
+        {
+          "question": "Where is Cupressus sempervirens native to?",
+          "options": ["Mediterranean", "North America", "Australia", "South Africa"],
+          "answer": "Mediterranean"
+        },
+        {
+          "question": "What is the main use of Cupressus sempervirens?",
+          "options": ["Timber", "Ornamental", "Medicine", "Fuel"],
+          "answer": "Ornamental"
+        },
+        {
+          "question": "Which part of the tree is used in essential oil production?",
+          "options": ["Cones", "Bark", "Leaves", "Roots"],
+          "answer": "Cones"
+        },
+        {
+          "question": "Is Cupressus sempervirens evergreen or deciduous?",
+          "options": ["Evergreen", "Deciduous"],
+          "answer": "Evergreen"
+        },
+        {
+          "question": "What shape is the Cupressus sempervirens crown?",
+          "options": ["Conical", "Round", "Flat-topped", "Vase-shaped"],
+          "answer": "Conical"
+        },
+        {
+          "question": "What type of climate does Cupressus sempervirens prefer?",
+          "options": ["Dry", "Humid", "Cold", "Tropical"],
+          "answer": "Dry"
+        },
+        {
+          "question": "How old can a Cupressus sempervirens tree live?",
+          "options": ["500 years", "100 years", "50 years", "200 years"],
+          "answer": "500 years"
+        },
+        {
+          "question": "Is Cupressus sempervirens used in windbreaks?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        }
+      ]
+    },
+    {
+      "name": "Gazania rigens (L.) Gaert",
+      "questions": [
+        {
+          "question": "What is the common name of Gazania rigens?",
+          "options": ["Treasure Flower", "Sunflower", "Marigold", "Daisy"],
+          "answer": "Treasure Flower"
+        },
+        {
+          "question": "What is the ideal growing condition for Gazania rigens?",
+          "options": ["Full sun", "Partial shade", "Full shade", "Indirect light"],
+          "answer": "Full sun"
+        },
+        {
+          "question": "What color are the flowers of Gazania rigens?",
+          "options": ["Yellow", "Orange", "Red", "All of the above"],
+          "answer": "All of the above"
+        },
+        {
+          "question": "Is Gazania rigens drought-tolerant?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What type of soil does Gazania rigens prefer?",
+          "options": ["Well-drained", "Clay", "Sandy", "Waterlogged"],
+          "answer": "Well-drained"
+        },
+        {
+          "question": "When does Gazania rigens typically bloom?",
+          "options": ["Spring to Autumn", "Winter", "Year-round", "Summer only"],
+          "answer": "Spring to Autumn"
+        },
+        {
+          "question": "What is the height range of Gazania rigens?",
+          "options": ["15-30 cm", "50-60 cm", "70-80 cm", "1 meter"],
+          "answer": "15-30 cm"
+        },
+        {
+          "question": "How often should Gazania rigens be watered?",
+          "options": ["Weekly", "Daily", "Monthly", "Only during droughts"],
+          "answer": "Weekly"
+        },
+        {
+          "question": "Is Gazania rigens a perennial or annual plant?",
+          "options": ["Perennial", "Annual"],
+          "answer": "Perennial"
+        },
+        {
+          "question": "What is the best use of Gazania rigens in landscaping?",
+          "options": ["Ground cover", "Hedge", "Climbing", "Ornamental pots"],
+          "answer": "Ground cover"
+        }
+      ]
+    },
+    {
+      "name": "Ononis natrix L.",
+      "questions": [
+        {
+          "question": "What is the common name of Ononis natrix?",
+          "options": ["Yellow Restharrow", "Purple Clover", "Red Clover", "Yellow Clover"],
+          "answer": "Yellow Restharrow"
+        },
+        {
+          "question": "What type of habitat does Ononis natrix prefer?",
+          "options": ["Grasslands", "Deserts", "Forests", "Wetlands"],
+          "answer": "Grasslands"
+        },
+        {
+          "question": "What color are the flowers of Ononis natrix?",
+          "options": ["Yellow", "Purple", "Red", "White"],
+          "answer": "Yellow"
+        },
+        {
+          "question": "When does Ononis natrix typically bloom?",
+          "options": ["Spring to Summer", "Autumn", "Winter", "Year-round"],
+          "answer": "Spring to Summer"
+        },
+        {
+          "question": "Is Ononis natrix a nitrogen-fixing plant?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What is the typical height of Ononis natrix?",
+          "options": ["30-60 cm", "10-20 cm", "70-100 cm", "1-2 meters"],
+          "answer": "30-60 cm"
+        },
+        {
+          "question": "What type of soil does Ononis natrix thrive in?",
+          "options": ["Sandy", "Clay", "Loamy", "Waterlogged"],
+          "answer": "Sandy"
+        },
+        {
+          "question": "What is the leaf shape of Ononis natrix?",
+          "options": ["Oval", "Lanceolate", "Heart-shaped", "Pinnate"],
+          "answer": "Pinnate"
+        },
+        {
+          "question": "Is Ononis natrix used in traditional medicine?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "How does Ononis natrix typically spread?",
+          "options": ["Seeds", "Runners", "Bulbs", "Cuttings"],
+          "answer": "Seeds"
+        }
+      ]
+    },
+    {
+      "name": "Atriplex nummularia Lindl",
+      "questions": [
+        {
+          "question": "What is the common name of Atriplex nummularia?",
+          "options": ["Old Man Saltbush", "Spinach", "Olive", "Sage"],
+          "answer": "Old Man Saltbush"
+        },
+        {
+          "question": "Where is Atriplex nummularia commonly found?",
+          "options": ["Australia", "South America", "North America", "Asia"],
+          "answer": "Australia"
+        },
+        {
+          "question": "What type of climate does Atriplex nummularia prefer?",
+          "options": ["Arid", "Tropical", "Temperate", "Cold"],
+          "answer": "Arid"
+        },
+        {
+          "question": "What is the main use of Atriplex nummularia?",
+          "options": ["Fodder", "Ornamental", "Medicine", "Timber"],
+          "answer": "Fodder"
+        },
+        {
+          "question": "What is the leaf shape of Atriplex nummularia?",
+          "options": ["Oval", "Heart-shaped", "Lanceolate", "Round"],
+          "answer": "Round"
+        },
+        {
+          "question": "Is Atriplex nummularia salt-tolerant?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What is the typical height of Atriplex nummularia?",
+          "options": ["1-3 meters", "30-50 cm", "5-7 meters", "10-15 meters"],
+          "answer": "1-3 meters"
+        },
+        {
+          "question": "What color are the leaves of Atriplex nummularia?",
+          "options": ["Grey-green", "Bright green", "Yellow-green", "Purple-green"],
+          "answer": "Grey-green"
+        },
+        {
+          "question": "Is Atriplex nummularia an evergreen or deciduous plant?",
+          "options": ["Evergreen", "Deciduous"],
+          "answer": "Evergreen"
+        },
+        {
+          "question": "How is Atriplex nummularia propagated?",
+          "options": ["Cuttings", "Seeds", "Grafting", "Layering"],
+          "answer": "Seeds"
+        }
+      ]
+    },
+    {
+      "name": "Hyoscyamus albus L.",
+      "questions": [
+        {
+          "question": "What is the common name of Hyoscyamus albus?",
+          "options": ["White Henbane", "Black Henbane", "Deadly Nightshade", "Belladonna"],
+          "answer": "White Henbane"
+        },
+        {
+          "question": "What type of plant is Hyoscyamus albus?",
+          "options": ["Herbaceous", "Woody", "Shrub", "Tree"],
+          "answer": "Herbaceous"
+        },
+        {
+          "question": "Is Hyoscyamus albus toxic?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What are the main alkaloids found in Hyoscyamus albus?",
+          "options": ["Hyoscyamine", "Morphine", "Quinine", "Codeine"],
+          "answer": "Hyoscyamine"
+        },
+        {
+          "question": "Where is Hyoscyamus albus naturally found?",
+          "options": ["Mediterranean", "Tropical", "Temperate", "Arctic"],
+          "answer": "Mediterranean"
+        },
+        {
+          "question": "What color are the flowers of Hyoscyamus albus?",
+          "options": ["White", "Yellow", "Red", "Purple"],
+          "answer": "White"
+        },
+        {
+          "question": "What is the growth habit of Hyoscyamus albus?",
+          "options": ["Annual", "Biennial", "Perennial", "Ephemeral"],
+          "answer": "Annual"
+        },
+        {
+          "question": "What type of soil does Hyoscyamus albus prefer?",
+          "options": ["Sandy", "Clay", "Loamy", "Waterlogged"],
+          "answer": "Sandy"
+        },
+        {
+          "question": "What part of Hyoscyamus albus is used in traditional medicine?",
+          "options": ["Leaves", "Roots", "Seeds", "Flowers"],
+          "answer": "Leaves"
+        },
+        {
+          "question": "What is the primary use of Hyoscyamus albus?",
+          "options": ["Medicine", "Fodder", "Ornamental", "Timber"],
+          "answer": "Medicine"
+        }
+      ]
+    },
+    {
+      "name": "Arundo donax L.",
+      "questions": [
+        {
+          "question": "What is the common name of Arundo donax?",
+          "options": ["Giant Reed", "Sugar Cane", "Bamboo", "Cattail"],
+          "answer": "Giant Reed"
+        },
+        {
+          "question": "What type of plant is Arundo donax?",
+          "options": ["Grass", "Shrub", "Tree", "Herb"],
+          "answer": "Grass"
+        },
+        {
+          "question": "Where is Arundo donax commonly found?",
+          "options": ["Mediterranean", "North America", "Asia", "Australia"],
+          "answer": "Mediterranean"
+        },
+        {
+          "question": "What is the main use of Arundo donax?",
+          "options": ["Pipes", "Fodder", "Ornamental", "Medicine"],
+          "answer": "Pipes"
+        },
+        {
+          "question": "What type of habitat does Arundo donax prefer?",
+          "options": ["Wetlands", "Desert", "Forest", "Mountain"],
+          "answer": "Wetlands"
+        },
+        {
+          "question": "How does Arundo donax spread?",
+          "options": ["Rhizomes", "Seeds", "Cuttings", "Layering"],
+          "answer": "Rhizomes"
+        },
+        {
+          "question": "What is the typical height of Arundo donax?",
+          "options": ["3-6 meters", "1-2 meters", "7-10 meters", "10-15 meters"],
+          "answer": "3-6 meters"
+        },
+        {
+          "question": "What color are the stems of Arundo donax?",
+          "options": ["Green", "Brown", "Red", "Purple"],
+          "answer": "Green"
+        },
+        {
+          "question": "Is Arundo donax invasive?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What type of soil does Arundo donax prefer?",
+          "options": ["Loamy", "Sandy", "Clay", "Waterlogged"],
+          "answer": "Loamy"
+        }
+      ]
+    },
+    {
+      "name": "Aeonium arboreum (L.) Webb. & Berth.",
+      "questions": [
+        {
+          "question": "What is the common name of Aeonium arboreum?",
+          "options": ["Tree Aeonium", "Rose Cactus", "Jade Plant", "Houseleek"],
+          "answer": "Tree Aeonium"
+        },
+        {
+          "question": "What type of plant is Aeonium arboreum?",
+          "options": ["Succulent", "Herb", "Shrub", "Tree"],
+          "answer": "Succulent"
+        },
+        {
+          "question": "Where is Aeonium arboreum native to?",
+          "options": ["Canary Islands", "Mexico", "South Africa", "Madagascar"],
+          "answer": "Canary Islands"
+        },
+        {
+          "question": "What color are the flowers of Aeonium arboreum?",
+          "options": ["Yellow", "White", "Red", "Pink"],
+          "answer": "Yellow"
+        },
+        {
+          "question": "What is the typical growth habit of Aeonium arboreum?",
+          "options": ["Rosette", "Creeping", "Climbing", "Vining"],
+          "answer": "Rosette"
+        },
+        {
+          "question": "How often should Aeonium arboreum be watered?",
+          "options": ["Infrequently", "Weekly", "Daily", "Monthly"],
+          "answer": "Infrequently"
+        },
+        {
+          "question": "What type of soil does Aeonium arboreum prefer?",
+          "options": ["Well-drained", "Waterlogged", "Clay", "Sandy"],
+          "answer": "Well-drained"
+        },
+        {
+          "question": "Is Aeonium arboreum frost-tolerant?",
+          "options": ["No", "Yes"],
+          "answer": "No"
+        },
+        {
+          "question": "What is the main use of Aeonium arboreum?",
+          "options": ["Ornamental", "Fodder", "Medicinal", "Food"],
+          "answer": "Ornamental"
+        },
+        {
+          "question": "How does Aeonium arboreum propagate?",
+          "options": ["Offsets", "Seeds", "Cuttings", "Layering"],
+          "answer": "Offsets"
+        }
+      ]
+    },
+    {
+      "name": "Thapsia transtagana Brot. = Th. garganica Auct.",
+      "questions": [
+        {
+          "question": "What is the common name of Thapsia transtagana?",
+          "options": ["Garganica", "Spotted Thapsia", "Giant Fennel", "Wild Carrot"],
+          "answer": "Garganica"
+        },
+        {
+          "question": "Where is Thapsia transtagana native to?",
+          "options": ["Mediterranean", "South America", "North America", "Asia"],
+          "answer": "Mediterranean"
+        },
+        {
+          "question": "What type of plant is Thapsia transtagana?",
+          "options": ["Herbaceous", "Shrub", "Tree", "Grass"],
+          "answer": "Herbaceous"
+        },
+        {
+          "question": "What part of Thapsia transtagana is used in traditional medicine?",
+          "options": ["Roots", "Leaves", "Seeds", "Flowers"],
+          "answer": "Roots"
+        },
+        {
+          "question": "What color are the flowers of Thapsia transtagana?",
+          "options": ["Yellow", "Red", "White", "Purple"],
+          "answer": "Yellow"
+        },
+        {
+          "question": "What is the typical height of Thapsia transtagana?",
+          "options": ["1-2 meters", "0.5-1 meter", "2-3 meters", "3-4 meters"],
+          "answer": "1-2 meters"
+        },
+        {
+          "question": "What type of habitat does Thapsia transtagana prefer?",
+          "options": ["Dry", "Wet", "Forest", "Mountain"],
+          "answer": "Dry"
+        },
+        {
+          "question": "Is Thapsia transtagana edible?",
+          "options": ["No", "Yes"],
+          "answer": "No"
+        },
+        {
+          "question": "What is the main use of Thapsia transtagana?",
+          "options": ["Medicine", "Ornamental", "Fodder", "Timber"],
+          "answer": "Medicine"
+        },
+        {
+          "question": "What is the leaf shape of Thapsia transtagana?",
+          "options": ["Lobed", "Entire", "Needle-like", "Heart-shaped"],
+          "answer": "Lobed"
+        }
+      ]
+    },
+    {
+      "name": "Nephrolepis exaltata (L.) Schott",
+      "questions": [
+        {
+          "question": "What is the common name of Nephrolepis exaltata?",
+          "options": ["Boston Fern", "Bird's Nest Fern", "Maidenhair Fern", "Lady Fern"],
+          "answer": "Boston Fern"
+        },
+        {
+          "question": "What type of plant is Nephrolepis exaltata?",
+          "options": ["Fern", "Grass", "Herb", "Shrub"],
+          "answer": "Fern"
+        },
+        {
+          "question": "Where is Nephrolepis exaltata commonly found?",
+          "options": ["Tropical regions", "Temperate regions", "Arctic regions", "Desert regions"],
+          "answer": "Tropical regions"
+        },
+        {
+          "question": "What is the typical growth habit of Nephrolepis exaltata?",
+          "options": ["Clumping", "Spreading", "Vining", "Creeping"],
+          "answer": "Clumping"
+        },
+        {
+          "question": "What type of soil does Nephrolepis exaltata prefer?",
+          "options": ["Moist", "Dry", "Sandy", "Clay"],
+          "answer": "Moist"
+        },
+        {
+          "question": "What is the leaf shape of Nephrolepis exaltata?",
+          "options": ["Feathery", "Round", "Heart-shaped", "Needle-like"],
+          "answer": "Feathery"
+        },
+        {
+          "question": "How does Nephrolepis exaltata propagate?",
+          "options": ["Spores", "Seeds", "Cuttings", "Division"],
+          "answer": "Spores"
+        },
+        {
+          "question": "Is Nephrolepis exaltata suitable for indoor use?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What is the typical height of Nephrolepis exaltata?",
+          "options": ["30-60 cm", "10-20 cm", "1-2 meters", "2-3 meters"],
+          "answer": "30-60 cm"
+        },
+        {
+          "question": "What is the main use of Nephrolepis exaltata?",
+          "options": ["Ornamental", "Fodder", "Medicine", "Food"],
+          "answer": "Ornamental"
+        }
+      ]
+    },
+    {
+      "name": "Acanthus mollis L.",
+      "questions": [
+        {
+          "question": "What is the common name of Acanthus mollis?",
+          "options": ["Bear's Breeches", "Elephant Ear", "Lamb's Ear", "Spiderwort"],
+          "answer": "Bear's Breeches"
+        },
+        {
+          "question": "What type of plant is Acanthus mollis?",
+          "options": ["Perennial", "Annual", "Biennial", "Shrub"],
+          "answer": "Perennial"
+        },
+        {
+          "question": "Where is Acanthus mollis native to?",
+          "options": ["Mediterranean", "North America", "South America", "Asia"],
+          "answer": "Mediterranean"
+        },
+        {
+          "question": "What color are the flowers of Acanthus mollis?",
+          "options": ["White", "Pink", "Purple", "Blue"],
+          "answer": "Purple"
+        },
+        {
+          "question": "What is the typical height of Acanthus mollis?",
+          "options": ["1-1.5 meters", "0.5 meters", "2-3 meters", "3-4 meters"],
+          "answer": "1-1.5 meters"
+        },
+        {
+          "question": "What type of habitat does Acanthus mollis prefer?",
+          "options": ["Shade", "Full sun", "Desert", "Wetlands"],
+          "answer": "Shade"
+        },
+        {
+          "question": "What is the leaf shape of Acanthus mollis?",
+          "options": ["Lobed", "Feathery", "Heart-shaped", "Round"],
+          "answer": "Lobed"
+        },
+        {
+          "question": "How does Acanthus mollis propagate?",
+          "options": ["Division", "Seeds", "Cuttings", "Layering"],
+          "answer": "Division"
+        },
+        {
+          "question": "Is Acanthus mollis suitable for ground cover?",
+          "options": ["Yes", "No"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What is the main use of Acanthus mollis?",
+          "options": ["Ornamental", "Fodder", "Medicine", "Food"],
+          "answer": "Ornamental"
+        }
+      ]
+    },
+    {
+      "name": "Cynara scolymus L.",
+      "questions": [
+        {
+          "question": "What is the common name of Cynara scolymus?",
+          "options": ["Artichoke", "Thistle", "Cardoon", "Dandelion"],
+          "answer": "Artichoke"
+        },
+        {
+          "question": "What part of Cynara scolymus is commonly eaten?",
+          "options": ["Bud", "Leaf", "Root", "Seed"],
+          "answer": "Bud"
+        },
+        {
+          "question": "Where is Cynara scolymus native to?",
+          "options": ["Mediterranean", "North America", "South America", "Asia"],
+          "answer": "Mediterranean"
+        },
+        {
+          "question": "What type of plant is Cynara scolymus?",
+          "options": ["Perennial", "Annual", "Biennial", "Shrub"],
+          "answer": "Perennial"
+        },
+        {
+          "question": "What is the typical height of Cynara scolymus?",
+          "options": ["1-1.5 meters", "0.5 meters", "2-3 meters", "3-4 meters"],
+          "answer": "1-1.5 meters"
+        },
+        {
+          "question": "What color are the flowers of Cynara scolymus?",
+          "options": ["Purple", "Red", "White", "Yellow"],
+          "answer": "Purple"
+        },
+        {
+          "question": "What type of soil does Cynara scolymus prefer?",
+          "options": ["Well-drained", "Clay", "Sandy", "Waterlogged"],
+          "answer": "Well-drained"
+        },
+        {
+          "question": "How is Cynara scolymus propagated?",
+          "options": ["Seeds", "Cuttings", "Division", "Layering"],
+          "answer": "Seeds"
+        },
+        {
+          "question": "What is the main use of Cynara scolymus?",
+          "options": ["Food", "Medicine", "Ornamental", "Fodder"],
+          "answer": "Food"
+        },
+        {
+          "question": "What is the leaf shape of Cynara scolymus?",
+          "options": ["Lobed", "Feathery", "Heart-shaped", "Round"],
+          "answer": "Lobed"
+        }
+      ]
+    }
+  ]
+}
