@@ -10,7 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  
+  shared_preferences: ^2.0.15
   cupertino_icons: ^1.0.6
 
 dev_dependencies:
@@ -22,54 +23,17 @@ flutter:
   uses-material-design: true
 
   assets:
-      # Puzzle Plants' Images
-    - assets/images/puzzle/acanthus-mollis.jpg
-    - assets/images/puzzle/aeonium-arboreum.jpg
-    - assets/images/puzzle/argania-spinosa.jpg
-    - assets/images/puzzle/arundo-donax.jpg
-    - assets/images/puzzle/atriplex-nummularia.jpg
-    - assets/images/puzzle/cupressus-sempervirens.jpg
-    - assets/images/puzzle/cynara-scolymus.jpg
-    - assets/images/puzzle/festuca-glauca.jpg
-    - assets/images/puzzle/gazania-rigens.jpg
-    - assets/images/puzzle/hyoscyamus-albus.jpg
-    - assets/images/puzzle/nephrolepis-exaltata.jpg
-    - assets/images/puzzle/ononis-natrix.jpg
-    - assets/images/puzzle/thapsia-transtagana.jpg
-    # Find the plant Wallpaper
-    - assets/images/find-the-plant/background/argania-wallpaper.jpg
-    - assets/images/find-the-plant/background/festuca-wallpaper.jpg
-    - assets/images/find-the-plant/background/gazania-wallpaper.jpg
-    - assets/images/find-the-plant/background/ononis-wallpaper.jpg
-    - assets/images/find-the-plant/background/atriplex-wallpaper.jpg
-    - assets/images/find-the-plant/background/hyoscyamus-wallpaper.jpg
-    - assets/images/find-the-plant/background/arundo-wallpaper.jpg
-    - assets/images/find-the-plant/background/cupressus-wallpaper.jpg
-    - assets/images/find-the-plant/background/thapsia-wallpaper.jpg
-    - assets/images/find-the-plant/background/nephrolepis-wallpaper.jpg
-    - assets/images/find-the-plant/background/aeonium-wallpaper.jpg
-    - assets/images/find-the-plant/background/cynara-wallpaper.jpg
-    - assets/images/find-the-plant/background/acanthus-wallpaper.jpg
-    # Find the plant Images
-    - assets/images/find-the-plant/plant/find-argania.png
-    - assets/images/find-the-plant/plant/find-festuca.png
-    - assets/images/find-the-plant/plant/find-gazania.png
-    - assets/images/find-the-plant/plant/find-ononis.png
-    - assets/images/find-the-plant/plant/find-atriplex.png
-    - assets/images/find-the-plant/plant/find-hyoscyamus.png
-    - assets/images/find-the-plant/plant/find-arundo.png
-    - assets/images/find-the-plant/plant/find-cupressus.png
-    - assets/images/find-the-plant/plant/find-thapsia.png
-    - assets/images/find-the-plant/plant/find-nephrolepis.png
-    - assets/images/find-the-plant/plant/find-aeonium.png
-    - assets/images/find-the-plant/plant/find-cynara.png
-    - assets/images/find-the-plant/plant/find-acanthus.png
-    # Background Images
-    - assets/images/backgrounds/background-1.jpg
-    - assets/images/backgrounds/background-2.jpg
-    # JSON Files
-    - assets/json-files/plants.json
-    - assets/json-files/quiz_questions.json
-    - assets/json-files/style.json
-
-
+    - assets/
+    - assets/images/
+    - assets/fonts/
+    - assets/images/puzzle/
+    - assets/images/find-the-plant/
+    - assets/images/backgrounds/
+    - assets/json-files/
+  fonts:
+    - family: MonicaGarden
+      fonts:
+        - asset: assets/fonts/MonicaGarden.ttf
+    - family: Billanta
+      fonts:
+        - asset: assets/fonts/Billanta.otf

@@ -23,7 +23,7 @@ class _PlantMenuScreenState extends State<PlantMenuScreen> {
 
   Future<void> loadPlantsData() async {
     final String response =
-        await rootBundle.loadString('json-files/plants.json');
+        await rootBundle.loadString('assets/json-files/plants.json');
     final data = await json.decode(response);
     setState(() {
       plants = data;

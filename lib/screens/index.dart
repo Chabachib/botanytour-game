@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/screens/plant_menu.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class IndexScreen extends StatefulWidget {
   const IndexScreen({super.key});
@@ -11,28 +12,43 @@ class IndexScreen extends StatefulWidget {
 }
 
 class _IndexScreenState extends State<IndexScreen> {
-  late List<Map<String, dynamic>> _backgrounds;
-  late Map<String, dynamic> _currentBackground;
+  late List<Map<String, dynamic>> _styles;
+  late Map<String, dynamic> _currentStyle;
   final PageController _pageController = PageController();
 
   @override
   void initState() {
     super.initState();
-    _loadBackgroundData();
+    _loadStyleData();
   }
 
-  Future<void> _loadBackgroundData() async {
+  Future<void> _loadStyleData() async {
     final jsonString =
         await rootBundle.loadString('assets/json-files/style.json');
     final data = json.decode(jsonString);
 
     setState(() {
-      _backgrounds = List<Map<String, dynamic>>.from(data['backgrounds']);
-      _currentBackground = _backgrounds[0]; // Set default background
+      _styles = List<Map<String, dynamic>>.from(data['styles']);
+    });
+
+    _loadSavedStyle(); // Load the saved style after loading the styles data
+  }
+
+  Future<void> _loadSavedStyle() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedStyleIndex = prefs.getInt('selectedStyleIndex') ?? 0;
+    setState(() {
+      _currentStyle = _styles[
+          savedStyleIndex]; // Load the saved style or default to first one
     });
   }
 
-  void _showBackgroundOptions() {
+  Future<void> _saveStyle(int index) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('selectedStyleIndex', index);
+  }
+
+  void _showStyleOptions() {
     showDialog(
       context: context,
       builder: (context) {
@@ -45,21 +61,22 @@ class _IndexScreenState extends State<IndexScreen> {
               children: [
                 PageView.builder(
                   controller: _pageController,
-                  itemCount: _backgrounds.length,
+                  itemCount: _styles.length,
                   itemBuilder: (context, index) {
-                    final background = _backgrounds[index];
+                    final style = _styles[index];
                     return GestureDetector(
                       onTap: () {
                         Navigator.of(context).pop();
                         setState(() {
-                          _currentBackground = background;
+                          _currentStyle = style;
                         });
+                        _saveStyle(index); // Save the selected style index
                       },
                       child: Container(
                         padding: const EdgeInsets.all(
                             8.0), // Adds padding around the image
                         child: Image.asset(
-                          background['image'],
+                          style['backgroundImage'],
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -91,7 +108,7 @@ class _IndexScreenState extends State<IndexScreen> {
                     icon: const Icon(Icons.arrow_right, size: 40),
                     onPressed: () {
                       final pageIndex = _pageController.page?.toInt() ?? 0;
-                      if (pageIndex < _backgrounds.length - 1) {
+                      if (pageIndex < _styles.length - 1) {
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.easeInOut,
@@ -118,13 +135,21 @@ class _IndexScreenState extends State<IndexScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (_backgrounds.isEmpty) {
+    if (_styles.isEmpty) {
       return const Scaffold(
         body: Center(
-            child:
-                CircularProgressIndicator()), // Show loading indicator while data is loading
+          child:
+              CircularProgressIndicator(), // Show loading indicator while data is loading
+        ),
       );
     }
+
+    // Extract the button text color from the current style
+    final buttonTextColor =
+        _currentStyle['themeColors'].containsKey('buttonTextColor')
+            ? Color(int.parse(_currentStyle['themeColors']['buttonTextColor']
+                .replaceAll('#', '0xFF')))
+            : Colors.black; // Default color if buttonTextColor is not provided
 
     return Scaffold(
       body: Stack(
@@ -133,59 +158,113 @@ class _IndexScreenState extends State<IndexScreen> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(_currentBackground['image']),
+                image: AssetImage(_currentStyle['backgroundImage']),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          // Title and Play button centered on top of the background
+          // Title positioned higher on the page
+          Positioned(
+            top: 150, // Adjust this value to move the title higher or lower
+            left: 0,
+            right: 0,
+            child: Align(
+              alignment: Alignment.center,
+              child: Stack(
+                children: [
+                  // Outline of the title
+                  Text(
+                    'BotanyTour Games',
+                    style: TextStyle(
+                      fontFamily: 'Billanta', // Use the custom font
+                      fontSize: 60,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 6
+                        ..color = Colors.black, // Outline color
+                    ),
+                  ),
+                  // Title itself
+                  Text(
+                    'BotanyTour Games',
+                    style: TextStyle(
+                      fontFamily: 'Billanta', // Use the custom font
+                      fontSize: 60,
+                      color: Color(int.parse(_currentStyle['themeColors']
+                              ['titleColor']
+                          .replaceAll('#', '0xFF'))),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          // Buttons centered on the page
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  'BotanyTour Game',
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    color: Color(int.parse(_currentBackground['themeColors']
-                            ['titleColor']
-                        .replaceAll('#', '0xFF'))),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PlantMenuScreen(),
+                SizedBox(
+                  width: 220, // Set a consistent width for all buttons
+                  height: 50, // Set a consistent height for all buttons
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PlantMenuScreen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(int.parse(
+                          _currentStyle['themeColors']['buttonColor']
+                              .replaceAll(
+                                  '#', '0xFF'))), // Button background color
+                      foregroundColor: buttonTextColor, // Button text color
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), // Curved edges
+                        side: const BorderSide(
+                            color: Colors.black,
+                            width: 1), // Thin black outline
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(int.parse(
-                        _currentBackground['themeColors']['buttonColor']
-                            .replaceAll('#', '0xFF'))),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 20),
-                    textStyle:
-                        const TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                    child: const Text(
+                      'Play',
+                      style: TextStyle(
+                        fontFamily: 'Billanta', // Custom font
+                        fontSize: 30, // Text size
+                      ),
+                    ),
                   ),
-                  child: const Text('Play'),
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: _showBackgroundOptions,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Colors.grey, // Color for the background change button
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 20),
-                    textStyle:
-                        const TextStyle(fontSize: 20, color: Colors.white),
+                SizedBox(
+                  width: 220, // Set a consistent width for all buttons
+                  height: 50, // Set a consistent height for all buttons
+                  child: ElevatedButton(
+                    onPressed: _showStyleOptions,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(int.parse(
+                          _currentStyle['themeColors']['buttonColor']
+                              .replaceAll(
+                                  '#', '0xFF'))), // Button background color
+                      foregroundColor: buttonTextColor, // Button text color
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), // Curved edges
+                        side: const BorderSide(
+                            color: Colors.black,
+                            width: 1), // Thin black outline
+                      ),
+                    ),
+                    child: const Text(
+                      'Change Background',
+                      style: TextStyle(
+                        fontFamily: 'Billanta', // Custom font
+                        fontSize: 28, // Text size
+                      ),
+                    ),
                   ),
-                  child: const Text('Change Background'),
                 ),
               ],
             ),
