@@ -1,0 +1,105 @@
+{
+    "backgrounds": [
+      {
+        "id": 1,
+        "image": "assets/images/backgrounds/background-1.jpg",
+        "themeColors": {
+          "titleColor": "#FF5733",
+          "buttonColor": "#C70039",
+          "textColor": "#900C3F",
+          "iconColor": "#581845"
+        }
+      },
+      {
+        "id": 2,
+        "image": "assets/images/backgrounds/background-2.jpg",
+        "themeColors": {
+          "titleColor": "#33FF57",
+          "buttonColor": "#28A745",
+          "textColor": "#218838",
+          "iconColor": "#1E7E34"
+        }
+      },
+      {
+        "id": 3,
+        "image": "assets/backgrounds/background3.png",
+        "themeColors": {
+          "titleColor": "#3357FF",
+          "buttonColor": "#0033A0",
+          "textColor": "#00297A",
+          "iconColor": "#001F55"
+        }
+      },
+      {
+        "id": 4,
+        "image": "assets/backgrounds/background4.png",
+        "themeColors": {
+          "titleColor": "#FF33A1",
+          "buttonColor": "#D02678",
+          "textColor": "#A01F5D",
+          "iconColor": "#701642"
+        }
+      },
+      {
+        "id": 5,
+        "image": "assets/backgrounds/background5.png",
+        "themeColors": {
+          "titleColor": "#A133FF",
+          "buttonColor": "#7A25D9",
+          "textColor": "#551899",
+          "iconColor": "#3F1270"
+        }
+      },
+      {
+        "id": 6,
+        "image": "assets/backgrounds/background6.png",
+        "themeColors": {
+          "titleColor": "#FF8C33",
+          "buttonColor": "#E07A21",
+          "textColor": "#C06919",
+          "iconColor": "#A05A12"
+        }
+      },
+      {
+        "id": 7,
+        "image": "assets/backgrounds/background7.png",
+        "themeColors": {
+          "titleColor": "#33FFF3",
+          "buttonColor": "#21E0D7",
+          "textColor": "#19BFBF",
+          "iconColor": "#129999"
+        }
+      },
+      {
+        "id": 8,
+        "image": "assets/backgrounds/background8.png",
+        "themeColors": {
+          "titleColor": "#FFDD33",
+          "buttonColor": "#E0C021",
+          "textColor": "#BFA319",
+          "iconColor": "#A08A12"
+        }
+      },
+      {
+        "id": 9,
+        "image": "assets/backgrounds/background9.png",
+        "themeColors": {
+          "titleColor": "#FF3385",
+          "buttonColor": "#E0216B",
+          "textColor": "#BF1952",
+          "iconColor": "#991239"
+        }
+      },
+      {
+        "id": 10,
+        "image": "assets/backgrounds/background10.png",
+        "themeColors": {
+          "titleColor": "#33A1FF",
+          "buttonColor": "#2188E0",
+          "textColor": "#1971BF",
+          "iconColor": "#125A99"
+        }
+      }
+    ]
+  }
+  

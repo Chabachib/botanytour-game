@@ -66,8 +66,10 @@ flutter:
     - assets/images/find-the-plant/plant/find-acanthus.png
     # Background Images
     - assets/images/backgrounds/background-1.jpg
+    - assets/images/backgrounds/background-2.jpg
     # JSON Files
     - assets/json-files/plants.json
     - assets/json-files/quiz_questions.json
+    - assets/json-files/style.json
 
 
