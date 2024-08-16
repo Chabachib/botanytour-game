@@ -32,7 +32,7 @@ class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
   Future<void> _loadPlantData() async {
     try {
       final String response =
-          await rootBundle.loadString('json-files/plants.json');
+          await rootBundle.loadString('assets/json-files/plants.json');
       final List<dynamic> data = json.decode(response);
       final plant = data.firstWhere(
         (p) => p['name'] == widget.plantName,
@@ -221,56 +221,38 @@ class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
       appBar: AppBar(
         title: const Text('Puzzle Game'),
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/backgrounds/puzzle-bg.jpg'),
-                fit: BoxFit.cover,
-              ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Moves: $_moveCount'),
+                Text('Timer: ${_formatTime(_elapsedTime)}'),
+                IconButton(
+                  icon: const Icon(Icons.image),
+                  onPressed: _showOriginalImage,
+                ),
+              ],
             ),
           ),
-          BackdropFilter(
-            filter: ui.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-            child: Container(
-              color: Colors.black.withOpacity(0),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.all(4.0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, // Updated for 3x3 grid
+                crossAxisSpacing: 4.0,
+                mainAxisSpacing: 4.0,
+              ),
+              itemCount: 9, // Updated for 3x3 grid
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () => _moveTile(index),
+                  child: _buildTile(index),
+                );
+              },
             ),
-          ),
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Moves: $_moveCount'),
-                    Text('Timer: ${_formatTime(_elapsedTime)}'),
-                    IconButton(
-                      icon: const Icon(Icons.image),
-                      onPressed: _showOriginalImage,
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: GridView.builder(
-                  padding: const EdgeInsets.all(4.0),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3, // Updated for 3x3 grid
-                    crossAxisSpacing: 4.0,
-                    mainAxisSpacing: 4.0,
-                  ),
-                  itemCount: 9, // Updated for 3x3 grid
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () => _moveTile(index),
-                      child: _buildTile(index),
-                    );
-                  },
-                ),
-              ),
-            ],
           ),
         ],
       ),

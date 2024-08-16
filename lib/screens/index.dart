@@ -12,8 +12,8 @@ class IndexScreen extends StatefulWidget {
 }
 
 class _IndexScreenState extends State<IndexScreen> {
-  late List<Map<String, dynamic>> _styles;
-  late Map<String, dynamic> _currentStyle;
+  late List<Map<String, dynamic>> _styles = []; // Initialize with an empty list
+  late Map<String, dynamic> _currentStyle = {}; // Initialize with an empty map
   final PageController _pageController = PageController();
 
   @override
@@ -37,9 +37,12 @@ class _IndexScreenState extends State<IndexScreen> {
   Future<void> _loadSavedStyle() async {
     final prefs = await SharedPreferences.getInstance();
     final savedStyleIndex = prefs.getInt('selectedStyleIndex') ?? 0;
+
+    // Ensure that _currentStyle is set only if _styles is not empty
     setState(() {
-      _currentStyle = _styles[
-          savedStyleIndex]; // Load the saved style or default to first one
+      if (_styles.isNotEmpty) {
+        _currentStyle = _styles[savedStyleIndex];
+      }
     });
   }
 

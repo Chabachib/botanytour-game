@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
+import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:myapp/screens/game_menu.dart';
 import 'dart:math';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PlantQuizScreen extends StatefulWidget {
   final String plantName;
@@ -18,17 +21,20 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
   String? _selectedAnswer;
   String _feedback = '';
   int _currentQuestionIndex = 0;
+  late Map<String, dynamic> _currentStyle;
+  bool _loading = true;
 
   @override
   void initState() {
     super.initState();
     _loadQuestions();
+    _loadStyle(); // Load the style data
   }
 
   Future<void> _loadQuestions() async {
     try {
       final String response =
-          await rootBundle.loadString('json-files/quiz_questions.json');
+          await rootBundle.loadString('assets/json-files/quiz_questions.json');
       final data = json.decode(response);
 
       debugPrint('Data loaded: $data'); // Debug print
@@ -67,15 +73,35 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
     }
   }
 
+  Future<void> _loadStyle() async {
+    try {
+      final jsonString =
+          await rootBundle.loadString('assets/json-files/style.json');
+      final data = json.decode(jsonString);
+      final styles = List<Map<String, dynamic>>.from(data['styles']);
+
+      final prefs = await SharedPreferences.getInstance();
+      final savedStyleIndex = prefs.getInt('selectedStyleIndex') ?? 0;
+
+      setState(() {
+        _currentStyle = styles.firstWhere(
+            (style) => style['id'] == savedStyleIndex + 1,
+            orElse: () => styles.first);
+        _loading = false;
+      });
+    } catch (e) {
+      debugPrint('Error loading style: $e');
+    }
+  }
+
   void _submitAnswer() {
     if (_selectedAnswer == _currentQuestion!['answer']) {
       setState(() {
-        _feedback = 'Correct!';
+        _feedback = 'Correct! ✅';
       });
     } else {
       setState(() {
-        _feedback =
-            'Incorrect. The correct answer is ${_currentQuestion!['answer']}';
+        _feedback = 'Wrong Answer! ❌';
       });
     }
 
@@ -104,8 +130,13 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                Navigator.pop(context);
-                Navigator.pop(context); // Go back to the menu screen
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        GameMenuScreen(plantName: widget.plantName),
+                  ),
+                  (route) => false, // Remove all previous routes
+                );
               },
             ),
           ],
@@ -114,8 +145,29 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
     );
   }
 
+  Color _getButtonColor(String option) {
+    if (_selectedAnswer == null) return Colors.white; // Default color
+
+    if (_feedback.startsWith('Correct') && option == _selectedAnswer) {
+      return Colors.green; // Correct answer
+    }
+    if (_feedback.startsWith('Wrong') && option == _selectedAnswer) {
+      return Colors.red; // Incorrect answer
+    }
+    return Colors.white; // Default color
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (_loading) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Quiz'),
+        ),
+        body: const Center(child: CircularProgressIndicator()),
+      );
+    }
+
     if (_currentQuestion == null) {
       return Scaffold(
         appBar: AppBar(
@@ -131,45 +183,158 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
       appBar: AppBar(
         title: const Text('Quiz'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Question ${_currentQuestionIndex + 1}/${_questions!.length}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(_currentStyle['backgroundImage']),
+                fit: BoxFit.cover,
+              ),
             ),
-            const SizedBox(height: 20),
-            Text(
-              _currentQuestion!['question'],
-              style: const TextStyle(fontSize: 16),
+          ),
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: Container(
+                color: Colors.black.withOpacity(0), // Transparent layer
+              ),
             ),
-            const SizedBox(height: 20),
-            ...options.map((option) {
-              return RadioListTile(
-                title: Text(option),
-                value: option,
-                groupValue: _selectedAnswer,
-                onChanged: (value) {
-                  setState(() {
-                    _selectedAnswer = value as String?;
-                  });
-                },
-              );
-            }),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _selectedAnswer == null ? null : _submitAnswer,
-              child: const Text('Submit'),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Outlined container for the question with the counter
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  width:
+                      double.infinity, // Ensures the container takes full width
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    border: Border.all(
+                      color: Colors.black, // Border color
+                      width: 2.0, // Border width
+                    ),
+                    borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Question counter
+                      Text(
+                        'Question ${_currentQuestionIndex + 1}/${_questions!.length}',
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20),
+                      // Question text
+                      Text(
+                        _currentQuestion!['question'],
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center, // Center text horizontally
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Answer options
+                ...options.map((option) {
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 10.0),
+                    decoration: BoxDecoration(
+                      color: _getButtonColor(option),
+                      border: Border.all(
+                        color: Colors.black, // Border color
+                        width: 2.0, // Border width
+                      ),
+                      borderRadius:
+                          BorderRadius.circular(8.0), // Rounded corners
+                    ),
+                    child: RadioListTile(
+                      title: Text(option),
+                      value: option,
+                      groupValue: _selectedAnswer,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedAnswer = value as String?;
+                        });
+                      },
+                    ),
+                  );
+                }),
+                const SizedBox(height: 20),
+                // Centered Submit button
+                Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.black, // Border color
+                        width: 2.0, // Border width
+                      ),
+                      borderRadius:
+                          BorderRadius.circular(8.0), // Rounded corners
+                    ),
+                    child: ElevatedButton(
+                      onPressed: _selectedAnswer == null ? null : _submitAnswer,
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
+                        padding: const EdgeInsets.all(16.0), // Text color
+                        elevation: 0, // Remove elevation
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(8.0), // Rounded corners
+                        ),
+                      ),
+                      child: const Text('Submit'),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Feedback
+                if (_feedback.isNotEmpty)
+                  Container(
+                    padding: const EdgeInsets.all(16.0),
+                    width: double
+                        .infinity, // Ensures the container takes full width
+                    decoration: BoxDecoration(
+                      color: _feedback.startsWith('Correct')
+                          ? Colors.green
+                          : Colors.red,
+                      border: Border.all(
+                        color: Colors.black, // Border color
+                        width: 2.0, // Border width
+                      ),
+                      borderRadius:
+                          BorderRadius.circular(8.0), // Rounded corners
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Feedback text and icon
+                        Icon(
+                          _feedback.startsWith('Correct')
+                              ? Icons.check_circle
+                              : Icons.cancel,
+                          color: Colors.white,
+                        ),
+                        const SizedBox(width: 8.0),
+                        Text(
+                          _feedback,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
             ),
-            const SizedBox(height: 20),
-            Text(
-              _feedback,
-              style: const TextStyle(color: Colors.red, fontSize: 16),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -13,8 +13,8 @@ class FindThePlantScreen extends StatefulWidget {
 }
 
 class _FindThePlantScreenState extends State<FindThePlantScreen> {
-  late String _backgroundImage;
-  late String _plantImage;
+  String _backgroundImage = ''; // Initialize with an empty string
+  String _plantImage = ''; // Initialize with an empty string
   double _leftPosition = 0;
   double _topPosition = 0;
 
@@ -28,7 +28,7 @@ class _FindThePlantScreenState extends State<FindThePlantScreen> {
   Future<void> _loadPlantData() async {
     try {
       final String response =
-          await rootBundle.loadString('json-files/plants.json');
+          await rootBundle.loadString('assets/json-files/plants.json');
       final List<dynamic> data = json.decode(response);
       final plant = data.firstWhere(
         (p) => p['name'] == widget.plantName,
@@ -76,6 +76,18 @@ class _FindThePlantScreenState extends State<FindThePlantScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_backgroundImage.isEmpty || _plantImage.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Find the Plant'),
+        ),
+        body: const Center(
+          child:
+              CircularProgressIndicator(), // Show loading indicator while data is loading
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Find the Plant'),
