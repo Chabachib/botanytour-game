@@ -22,7 +22,6 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
   int _currentQuestionIndex = 0;
   late Map<String, dynamic> _currentStyle;
   bool _loading = true;
-  int _correctAnswers = 0; // Track correct answers
 
   @override
   void initState() {
@@ -67,7 +66,7 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
         });
       }
     } catch (e) {
-      debugPrint('Error loading questions: $e'); // Debug print
+      // Error handling removed for clarity
     }
   }
 
@@ -90,21 +89,16 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
         });
       }
     } catch (e) {
-      debugPrint('Error loading style: $e');
+      // Error handling removed for clarity
     }
   }
 
   void _submitAnswer() {
-    if (_selectedAnswer == _currentQuestion!['answer']) {
-      setState(() {
-        _feedback = 'Correct! ✅';
-        _correctAnswers++; // Increment correct answers
-      });
-    } else {
-      setState(() {
-        _feedback = 'Wrong Answer! ❌';
-      });
-    }
+    setState(() {
+      _feedback = _selectedAnswer == _currentQuestion!['answer']
+          ? 'Correct! ✅'
+          : 'Wrong Answer! ❌';
+    });
 
     Future.delayed(const Duration(seconds: 2), () {
       if (_currentQuestionIndex < (_questions!.length - 1)) {
@@ -123,26 +117,13 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
   }
 
   Future<void> _showFinishDialog() async {
-    bool allCorrect = _correctAnswers == _questions!.length;
-
-    if (allCorrect) {
-      // Update the completion status for the specific plant if all answers were correct
-      final prefs = await SharedPreferences.getInstance();
-      int stars = prefs.getInt('${widget.plantName}_stars') ?? 0;
-      prefs.setInt('${widget.plantName}_stars', stars + 1);
-    }
-
     if (mounted) {
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Quiz Finished'),
-            content: Text(
-              allCorrect
-                  ? 'You have completed the quiz with all correct answers! ⭐'
-                  : 'You have completed the quiz.',
-            ),
+            content: const Text('You have completed the quiz.'),
             actions: <Widget>[
               TextButton(
                 child: const Text('OK'),

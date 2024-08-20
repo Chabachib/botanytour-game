@@ -3,7 +3,6 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PlantPuzzleScreen extends StatefulWidget {
@@ -333,25 +332,24 @@ class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
 
   Widget _buildTile(int index) {
     if (_tiles[index] == null) {
-      return Container(
-        color: Colors.transparent,
-      );
+      return const SizedBox.shrink();
     }
+
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: _tiles[index]!.image,
-          fit: BoxFit.cover,
-        ),
+        border: Border.all(color: Colors.black, width: 2.0),
         borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(color: Colors.white, width: 2.0),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: _tiles[index],
       ),
     );
   }
 
-  String _formatTime(int seconds) {
-    int minutes = seconds ~/ 60;
-    int remainingSeconds = seconds % 60;
-    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+  String _formatTime(int elapsedTime) {
+    final int minutes = elapsedTime ~/ 60;
+    final int seconds = elapsedTime % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
   }
 }
