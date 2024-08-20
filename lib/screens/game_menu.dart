@@ -19,11 +19,18 @@ class GameMenuScreen extends StatefulWidget {
 class _GameMenuScreenState extends State<GameMenuScreen> {
   late Map<String, dynamic> _currentStyle;
   bool _loading = true;
+  late SharedPreferences _prefs;
+  Map<String, bool> _completionStatus = {
+    'Quiz': false,
+    'Find the Plant': false,
+    'Puzzle': false,
+  };
 
   @override
   void initState() {
     super.initState();
     _loadSavedStyle();
+    _loadCompletionStatus();
   }
 
   Future<void> _loadSavedStyle() async {
@@ -32,14 +39,33 @@ class _GameMenuScreenState extends State<GameMenuScreen> {
     final data = json.decode(jsonString);
     final styles = List<Map<String, dynamic>>.from(data['styles']);
 
-    final prefs = await SharedPreferences.getInstance();
-    final savedStyleIndex = prefs.getInt('selectedStyleIndex') ?? 0;
+    _prefs = await SharedPreferences.getInstance();
+    final savedStyleIndex = _prefs.getInt('selectedStyleIndex') ?? 0;
 
     setState(() {
       _currentStyle = styles.firstWhere(
           (style) => style['id'] == savedStyleIndex + 1,
           orElse: () => styles.first);
       _loading = false;
+    });
+  }
+
+  Future<void> _loadCompletionStatus() async {
+    _prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      _completionStatus = {
+        'Quiz': _prefs.getBool('QuizCompleted') ?? false,
+        'Find the Plant': _prefs.getBool('FindThePlantCompleted') ?? false,
+        'Puzzle': _prefs.getBool('PuzzleCompleted') ?? false,
+      };
+    });
+  }
+
+  void _updateCompletionStatus(String game) {
+    setState(() {
+      _completionStatus[game] = true;
+      _prefs.setBool('${game}Completed', true);
     });
   }
 
@@ -93,10 +119,12 @@ class _GameMenuScreenState extends State<GameMenuScreen> {
                   FindThePlantScreen(plantName: widget.plantName),
                   PlantPuzzleScreen(plantName: widget.plantName),
                 ];
+                final gameTitle = titles[index];
                 return _buildMenuButton(
                   context,
-                  titles[index],
+                  gameTitle,
                   screens[index],
+                  _completionStatus[gameTitle] ?? false,
                 );
               },
             ),
@@ -106,13 +134,15 @@ class _GameMenuScreenState extends State<GameMenuScreen> {
     );
   }
 
-  Widget _buildMenuButton(BuildContext context, String title, Widget screen) {
+  Widget _buildMenuButton(
+      BuildContext context, String title, Widget screen, bool isCompleted) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
+      onTap: () async {
+        await Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => screen),
         );
+        _updateCompletionStatus(title); // Mark the game as completed
       },
       child: Container(
         decoration: BoxDecoration(
@@ -127,13 +157,23 @@ class _GameMenuScreenState extends State<GameMenuScreen> {
           ],
         ),
         alignment: Alignment.center,
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18, // Match text size from PlantMenuScreen
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 18, // Match text size from PlantMenuScreen
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(width: 8.0),
+            Icon(
+              isCompleted ? Icons.star : Icons.star_border,
+              color: isCompleted ? Colors.yellow : Colors.grey,
+            ),
+          ],
         ),
       ),
     );

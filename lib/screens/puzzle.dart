@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class PlantPuzzleScreen extends StatefulWidget {
   final String plantName;
 
@@ -14,18 +16,21 @@ class PlantPuzzleScreen extends StatefulWidget {
 }
 
 class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
-  List<Image?> _tiles = []; // Initialized to an empty list
+  List<Image?> _tiles = [];
   List<Image?> _correctOrder = [];
   late int _emptyTileIndex;
   int _moveCount = 0;
   late Timer _timer;
   int _elapsedTime = 0;
   late String _imagePath;
+  late Map<String, dynamic> _currentStyle;
+  bool _loading = true;
 
   @override
   void initState() {
     super.initState();
     _loadPlantData();
+    _loadStyle();
     _startTimer();
   }
 
@@ -50,6 +55,27 @@ class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
     }
   }
 
+  Future<void> _loadStyle() async {
+    try {
+      final jsonString =
+          await rootBundle.loadString('assets/json-files/style.json');
+      final data = json.decode(jsonString);
+      final styles = List<Map<String, dynamic>>.from(data['styles']);
+
+      final prefs = await SharedPreferences.getInstance();
+      final savedStyleIndex = prefs.getInt('selectedStyleIndex') ?? 0;
+
+      setState(() {
+        _currentStyle = styles.firstWhere(
+            (style) => style['id'] == savedStyleIndex + 1,
+            orElse: () => styles.first);
+        _loading = false;
+      });
+    } catch (e) {
+      debugPrint('Error loading style: $e');
+    }
+  }
+
   Future<void> _initializePuzzle() async {
     ByteData imageData = await rootBundle.load(_imagePath);
     Uint8List bytes = imageData.buffer.asUint8List();
@@ -62,26 +88,25 @@ class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
     _correctOrder = List.from(tiles);
 
     List<Image?> shuffledTiles = List.from(tiles);
-    shuffledTiles.add(null); // Add an empty tile
+    shuffledTiles.add(null);
 
     shuffledTiles.removeAt(shuffledTiles.length - 1);
     shuffledTiles.shuffle();
-    shuffledTiles.add(null); // Add the empty tile back
+    shuffledTiles.add(null);
 
     setState(() {
       _tiles = shuffledTiles;
-      _emptyTileIndex = _tiles.length - 1; // The last index is the empty tile
+      _emptyTileIndex = _tiles.length - 1;
     });
   }
 
   Future<List<Image?>> _splitImage(ui.Image image) async {
-    int tileSize = image.width ~/ 3; // Updated for 3x3 grid
+    int tileSize = image.width ~/ 3;
     List<Image?> tiles = [];
 
     for (int i = 0; i < 3; i++) {
-      // Updated for 3x3 grid
       for (int j = 0; j < 3; j++) {
-        if (i == 2 && j == 2) break; // Skip the last tile
+        if (i == 2 && j == 2) break;
 
         tiles.add(Image.memory(await _extractTile(image, i, j, tileSize)));
       }
@@ -144,10 +169,8 @@ class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
   }
 
   bool _canMove(int index) {
-    int rowDifference =
-        (_emptyTileIndex ~/ 3 - index ~/ 3).abs(); // Updated for 3x3 grid
-    int columnDifference =
-        (_emptyTileIndex % 3 - index % 3).abs(); // Updated for 3x3 grid
+    int rowDifference = (_emptyTileIndex ~/ 3 - index ~/ 3).abs();
+    int columnDifference = (_emptyTileIndex % 3 - index % 3).abs();
     return (rowDifference + columnDifference) == 1;
   }
 
@@ -206,6 +229,15 @@ class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_loading) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Puzzle Game'),
+        ),
+        body: const Center(child: CircularProgressIndicator()),
+      );
+    }
+
     if (_tiles.isEmpty) {
       return Scaffold(
         appBar: AppBar(
@@ -221,38 +253,78 @@ class _PlantPuzzleScreenState extends State<PlantPuzzleScreen> {
       appBar: AppBar(
         title: const Text('Puzzle Game'),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Moves: $_moveCount'),
-                Text('Timer: ${_formatTime(_elapsedTime)}'),
-                IconButton(
-                  icon: const Icon(Icons.image),
-                  onPressed: _showOriginalImage,
-                ),
-              ],
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(_currentStyle['backgroundImage']),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          Expanded(
-            child: GridView.builder(
-              padding: const EdgeInsets.all(4.0),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, // Updated for 3x3 grid
-                crossAxisSpacing: 4.0,
-                mainAxisSpacing: 4.0,
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: Container(
+                color: Colors.black.withOpacity(0), // Transparent layer
               ),
-              itemCount: 9, // Updated for 3x3 grid
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () => _moveTile(index),
-                  child: _buildTile(index),
-                );
-              },
             ),
+          ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(color: Colors.black, width: 2.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Moves: $_moveCount',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Timer: ${_formatTime(_elapsedTime)}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.image),
+                        onPressed: _showOriginalImage,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: GridView.builder(
+                  padding: const EdgeInsets.all(4.0),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 4.0,
+                    mainAxisSpacing: 4.0,
+                  ),
+                  itemCount: 9,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () => _moveTile(index),
+                      child: _buildTile(index),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ],
       ),

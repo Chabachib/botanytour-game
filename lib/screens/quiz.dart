@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:myapp/screens/game_menu.dart';
 import 'dart:math';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,6 +22,7 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
   int _currentQuestionIndex = 0;
   late Map<String, dynamic> _currentStyle;
   bool _loading = true;
+  int _correctAnswers = 0; // Track correct answers
 
   @override
   void initState() {
@@ -37,15 +37,12 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
           await rootBundle.loadString('assets/json-files/quiz_questions.json');
       final data = json.decode(response);
 
-      debugPrint('Data loaded: $data'); // Debug print
-
       final plant = data['plants'].firstWhere(
         (p) => p['name'] == widget.plantName,
         orElse: () => null,
       );
 
       if (plant == null) {
-        debugPrint('Plant not found: ${widget.plantName}'); // Debug print
         return;
       }
 
@@ -53,8 +50,6 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
       final random = Random();
 
       if (questions.isEmpty) {
-        debugPrint(
-            'No questions found for plant: ${widget.plantName}'); // Debug print
         return;
       }
 
@@ -63,11 +58,14 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
         return questions[random.nextInt(questions.length)];
       });
 
-      setState(() {
-        _questions = randomQuestions;
-        _currentQuestion =
-            _questions!.isNotEmpty ? _questions![_currentQuestionIndex] : null;
-      });
+      if (mounted) {
+        setState(() {
+          _questions = randomQuestions;
+          _currentQuestion = _questions!.isNotEmpty
+              ? _questions![_currentQuestionIndex]
+              : null;
+        });
+      }
     } catch (e) {
       debugPrint('Error loading questions: $e'); // Debug print
     }
@@ -83,12 +81,14 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
       final prefs = await SharedPreferences.getInstance();
       final savedStyleIndex = prefs.getInt('selectedStyleIndex') ?? 0;
 
-      setState(() {
-        _currentStyle = styles.firstWhere(
-            (style) => style['id'] == savedStyleIndex + 1,
-            orElse: () => styles.first);
-        _loading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _currentStyle = styles.firstWhere(
+              (style) => style['id'] == savedStyleIndex + 1,
+              orElse: () => styles.first);
+          _loading = false;
+        });
+      }
     } catch (e) {
       debugPrint('Error loading style: $e');
     }
@@ -98,6 +98,7 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
     if (_selectedAnswer == _currentQuestion!['answer']) {
       setState(() {
         _feedback = 'Correct! ✅';
+        _correctAnswers++; // Increment correct answers
       });
     } else {
       setState(() {
@@ -107,42 +108,53 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
 
     Future.delayed(const Duration(seconds: 2), () {
       if (_currentQuestionIndex < (_questions!.length - 1)) {
-        setState(() {
-          _currentQuestionIndex++;
-          _currentQuestion = _questions![_currentQuestionIndex];
-          _selectedAnswer = null;
-          _feedback = '';
-        });
+        if (mounted) {
+          setState(() {
+            _currentQuestionIndex++;
+            _currentQuestion = _questions![_currentQuestionIndex];
+            _selectedAnswer = null;
+            _feedback = '';
+          });
+        }
       } else {
         _showFinishDialog();
       }
     });
   }
 
-  void _showFinishDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Quiz Finished'),
-          content: const Text('You have completed the quiz!'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        GameMenuScreen(plantName: widget.plantName),
-                  ),
-                  (route) => false, // Remove all previous routes
-                );
-              },
+  Future<void> _showFinishDialog() async {
+    bool allCorrect = _correctAnswers == _questions!.length;
+
+    if (allCorrect) {
+      // Update the completion status for the specific plant if all answers were correct
+      final prefs = await SharedPreferences.getInstance();
+      int stars = prefs.getInt('${widget.plantName}_stars') ?? 0;
+      prefs.setInt('${widget.plantName}_stars', stars + 1);
+    }
+
+    if (mounted) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Quiz Finished'),
+            content: Text(
+              allCorrect
+                  ? 'You have completed the quiz with all correct answers! ⭐'
+                  : 'You have completed the quiz.',
             ),
-          ],
-        );
-      },
-    );
+            actions: <Widget>[
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.pop(context); // Close the dialog
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   Color _getButtonColor(String option) {
@@ -284,18 +296,14 @@ class _PlantQuizScreenState extends State<PlantQuizScreen> {
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.white,
                         padding: const EdgeInsets.all(16.0), // Text color
-                        elevation: 0, // Remove elevation
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(8.0), // Rounded corners
-                        ),
+                        elevation: 0, // Remove elevation/shadow
                       ),
                       child: const Text('Submit'),
                     ),
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Feedback
+                // Feedback container
                 if (_feedback.isNotEmpty)
                   Container(
                     padding: const EdgeInsets.all(16.0),

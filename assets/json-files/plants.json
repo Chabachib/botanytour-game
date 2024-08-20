@@ -2,37 +2,37 @@
   {
     "id": 1,
     "name": "Argania spinosa (L.) Skeels",
-    "image": "images/puzzle/argania-spinosa.jpg",
-    "wallpaper": "images/find-the-plant/background/argania-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-argania.png"
+    "image": "assets/images/puzzle/argania-spinosa.jpg",
+    "wallpaper": "assets/images/find-the-plant/background/argania-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-argania.png"
   },
   {
     "id": 2,
     "name": "Festuca glauca Vill",
     "image": "assets/images/puzzle/festuca-glauca.jpg",
-    "wallpaper": "images/find-the-plant/background/festuca-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-festuca.png"
+    "wallpaper": "assets/images/find-the-plant/background/festuca-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-festuca.png"
   },
   {
     "id": 3,
     "name": "Cupressus sempervirens L.",
     "image": "assets/images/puzzle/cupressus-sempervirens.jpg",
-    "wallpaper": "images/find-the-plant/background/cupressus-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-cupressus.png"
+    "wallpaper": "assets/images/find-the-plant/background/cupressus-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-cupressus.png"
   },
   {
     "id": 4,
     "name": "Gazania rigens (L.) Gaert",
     "image": "assets/images/puzzle/gazania-rigens.jpg",
-    "wallpaper": "images/find-the-plant/background/gazania-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-gazania.png"
+    "wallpaper": "assets/images/find-the-plant/background/gazania-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-gazania.png"
   },
   {
     "id": 5,
     "name": "Ononis natrix L.",
     "image": "assets/images/puzzle/ononis-natrix.jpg",
-    "wallpaper": "images/find-the-plant/background/ononis-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-ononis.png"
+    "wallpaper": "assets/images/find-the-plant/background/ononis-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-ononis.png"
   },
   {
     "id": 6,
@@ -45,49 +45,49 @@
     "id": 7,
     "name": "Hyoscyamus albus L.",
     "image": "assets/images/puzzle/hyoscyamus-albus.jpg",
-    "wallpaper": "images/find-the-plant/background/hyoscyamus-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-hyoscyamus.png"
+    "wallpaper": "assets/images/find-the-plant/background/hyoscyamus-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-hyoscyamus.png"
   },
   {
     "id": 8,
     "name": "Arundo donax L.",
     "image": "assets/images/puzzle/arundo-donax.jpg",
-    "wallpaper": "images/find-the-plant/background/arundo-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-arundo.png"
+    "wallpaper": "assets/images/find-the-plant/background/arundo-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-arundo.png"
   },
   {
     "id": 9,
     "name": "Aeonium arboreum (L.) Webb. & Berth.",
     "image": "assets/images/puzzle/aeonium-arboreum.jpg",
-    "wallpaper": "images/find-the-plant/background/aeonium-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-aeonium.png"
+    "wallpaper": "assets/images/find-the-plant/background/aeonium-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-aeonium.png"
   },
   {
     "id": 10,
     "name": "Thapsia transtagana Brot.",
     "image": "assets/images/puzzle/thapsia-transtagana.jpg",
-    "wallpaper": "images/find-the-plant/background/thapsia-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-thapsia.png"
+    "wallpaper": "assets/images/find-the-plant/background/thapsia-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-thapsia.png"
   },
   {
     "id": 11,
     "name": "Nephrolepis exaltata (L.) Schott",
     "image": "assets/images/puzzle/nephrolepis-exaltata.jpg",
-    "wallpaper": "images/find-the-plant/background/nephrolepis-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-nephrolepis.png"
+    "wallpaper": "assets/images/find-the-plant/background/nephrolepis-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-nephrolepis.png"
   },
   {
     "id": 12,
     "name": "Acanthus mollis L.",
     "image": "assets/images/puzzle/acanthus-mollis.jpg",
-    "wallpaper": "images/find-the-plant/background/acanthus-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-acanthus.png"
+    "wallpaper": "assets/images/find-the-plant/background/acanthus-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-acanthus.png"
   },
   {
     "id": 13,
     "name": "Cynara scolymus L.",
     "image": "assets/images/puzzle/cynara-scolymus.jpg",
-    "wallpaper": "images/find-the-plant/background/cynara-wallpaper.jpg",
-    "find-plant-image":"images/find-the-plant/plant/find-cynara.png"
+    "wallpaper": "assets/images/find-the-plant/background/cynara-wallpaper.jpg",
+    "find-plant-image":"assets/images/find-the-plant/plant/find-cynara.png"
   }
 ]

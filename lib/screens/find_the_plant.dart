@@ -65,7 +65,6 @@ class _FindThePlantScreenState extends State<FindThePlantScreen> {
               child: const Text('OK'),
               onPressed: () {
                 Navigator.pop(context); // Close the dialog
-                Navigator.pop(context); // Go back to the menu screen
               },
             ),
           ],

@@ -28,6 +28,8 @@ flutter:
     - assets/fonts/
     - assets/images/puzzle/
     - assets/images/find-the-plant/
+    - assets/images/find-the-plant/background/
+    - assets/images/find-the-plant/plant/
     - assets/images/backgrounds/
     - assets/json-files/
   fonts:
